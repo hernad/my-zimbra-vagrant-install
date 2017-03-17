@@ -11,7 +11,9 @@ else
 fi
 
 
-cd /data/zimbra
-cd ZimbraBuild
-./buildZCS.sh
+echo zimbra foss monolith tree (8.7.1)
 
+cd /data/zimbra-foss
+cd ZimbraBuild
+
+./buildZCS.sh
