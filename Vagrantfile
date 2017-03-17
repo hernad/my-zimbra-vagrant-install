@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu-16.04-dev"
 
   config.persistent_storage.enabled = true
-  config.persistent_storage.location = "data_zimbra.vdi"
+  config.persistent_storage.location = "data_zimbra_dev.vdi"
   config.persistent_storage.mountname = 'zimbra'
   config.persistent_storage.filesystem = 'ext4'
   config.persistent_storage.mountpoint = '/data'

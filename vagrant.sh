@@ -9,3 +9,9 @@ if ( ! mount | grep -q \/data ) ; then
 else
    echo /data mounted
 fi
+
+
+cd /data/zimbra
+cd ZimbraBuild
+./buildZCS.sh
+
