@@ -11,7 +11,7 @@ else
 fi
 
 
-echo zimbra foss monolith tree (8.7.1)
+echo zimbra foss monolith tree \(8.7.1\)
 
 cd /data/zimbra-foss
 cd ZimbraBuild
