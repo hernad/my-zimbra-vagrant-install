@@ -20,7 +20,7 @@ sudo dpkg -i *.deb
 sudo apt-get install -f -y
 
 
-sudo apt-get install -y libnet-ldap-perl silversearcher-ag
+sudo apt-get install -y libnet-ldap-perl libdbi-perl silversearcher-ag
 
 # zimbra pgp key
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 9BE6ED79
