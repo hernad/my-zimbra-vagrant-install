@@ -18,3 +18,7 @@ cat large/zimbra-openjdk* > zimbra-openjdk.deb
 
 sudo dpkg -i *.deb
 sudo apt-get install -f -y
+
+
+sudo apt-get install -y libnet-ldap-perl
+
