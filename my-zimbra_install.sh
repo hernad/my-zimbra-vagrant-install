@@ -41,5 +41,6 @@ unset ZM_CUR_MAJOR ZM_CUR_MINOR ZM_CUR_MICRO
 
 echo "NEW install"
 sudo rm /opt/zimbra/.install_history
+sudo apt-get remove -y zimbra-core
 sudo ./install.sh
 
