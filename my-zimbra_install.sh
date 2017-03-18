@@ -1,7 +1,8 @@
 #!/bin/bash
 
 if [ x$1 == x--init ] ; then
-  sudo rm -rf /opt/zimbra/*
+  sudo rm -rf /opt/zimbra/ *
+  sudo apt-get remove -y zimbra-core # na osnovu zimbra-core installer utvrdjuje da li je nova instalacija ili upgrade
   sudo mkdir /opt/zimbra/install_git
   sudo chown vagrant /opt/zimbra/install_git
 fi
@@ -34,9 +35,11 @@ cd /opt/zimbra/install_git
 tar xvf /vagrant/zcs.tar.gz
 cd zcs-*
 
-#export ZM_CUR_MAJOR=8
-#export ZM_CUR_MINOR=7
-#export ZM_CUR_MICRO=1
+#export ZM_CUR_MAJOR=8  ZM_CUR_MINOR=7  ZM_CUR_MICRO=1
 
 unset ZM_CUR_MAJOR ZM_CUR_MINOR ZM_CUR_MICRO
+
+echo "NEW install"
+sudo rm /opt/zimbra/.install_history
 sudo ./install.sh
+
