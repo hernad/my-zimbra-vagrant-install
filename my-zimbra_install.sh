@@ -20,5 +20,23 @@ sudo dpkg -i *.deb
 sudo apt-get install -f -y
 
 
-sudo apt-get install -y libnet-ldap-perl
+sudo apt-get install -y libnet-ldap-perl silversearcher-ag
 
+# zimbra pgp key
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 9BE6ED79
+sudo apt-get install -y apt-transport-https
+
+cat "deb https://repo.zimbra.com/apt/87 xenial zimbra" >> /etc/apt/sources.list
+
+sudo apt-get update
+
+cd /opt/zimbra/install_git
+tar xvf /vagrant/zcs.tar.gz
+cd zcs-*
+
+#export ZM_CUR_MAJOR=8
+#export ZM_CUR_MINOR=7
+#export ZM_CUR_MICRO=1
+
+unset ZM_CUR_MAJOR ZM_CUR_MINOR ZM_CUR_MICRO
+sudo ./install.sh
