@@ -49,5 +49,6 @@ echo "FORCE NEW install"
 sudo rm /opt/zimbra/.install_history
 sudo apt-get remove -y zimbra-core
 #export ZIMBRA_FORCE_NEW_INSTALL="yes" => ignore DETECTDIRS='db bin/zmcontrol redolog index store conf/localconfig.xml data'
-sudo su -c "ZIMBRA_FORCE_NEW_INSTALL=yes  ./install.sh"
+
+sudo su -c "ZIMBRA_HOSTNAME=vagrant.out.ba ZIMBRA_DOMAIN=out.ba ZIMBRA_FORCE_NEW_INSTALL=yes ./install.sh"
 
