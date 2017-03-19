@@ -1,12 +1,19 @@
 #!/bin/bash
 
 if [ x$1 == x--init ] ; then
-  sudo rm -rf /opt/zimbra/ *
+  sudo rm -rf /opt/zimbra/*
+  sudo rm -rf /opt/zimbra/.install_history
   sudo apt-get remove -y zimbra-core # na osnovu zimbra-core installer utvrdjuje da li je nova instalacija ili upgrade
-  sudo mkdir /opt/zimbra/install_git
+  sudo mkdir -p /opt/zimbra/install_git
   sudo chown vagrant /opt/zimbra/install_git
 fi
 
+
+if [ ! -d /opt/zimbra/install_git ]  ; then
+   echo "install_git nema"
+   echo "run with --init"
+   exit 1 
+fi
 
 cd /opt/zimbra/install_git
 
@@ -27,8 +34,7 @@ sudo apt-get install -y libnet-ldap-perl libdbi-perl silversearcher-ag
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 9BE6ED79
 sudo apt-get install -y apt-transport-https
 
-cat "deb https://repo.zimbra.com/apt/87 xenial zimbra" >> /etc/apt/sources.list
-
+sudo su -c "echo 'deb https://repo.zimbra.com/apt/87 xenial zimbra' >> /etc/apt/sources.list"
 sudo apt-get update
 
 cd /opt/zimbra/install_git
@@ -39,8 +45,9 @@ cd zcs-*
 
 unset ZM_CUR_MAJOR ZM_CUR_MINOR ZM_CUR_MICRO
 
-echo "NEW install"
+echo "FORCE NEW install"
 sudo rm /opt/zimbra/.install_history
 sudo apt-get remove -y zimbra-core
-sudo ./install.sh
+#export ZIMBRA_FORCE_NEW_INSTALL="yes" => ignore DETECTDIRS='db bin/zmcontrol redolog index store conf/localconfig.xml data'
+sudo su -c "ZIMBRA_FORCE_NEW_INSTALL=yes  ./install.sh"
 
