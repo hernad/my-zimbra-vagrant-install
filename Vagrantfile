@@ -23,8 +23,9 @@ Vagrant.configure("2") do |config|
   config.vm.provider "virtualbox" do |vb|
      vb.memory = "4096"
   end
-  
-  config.vm.provision "shell", inline: <<-SHELL
-      /vagrant/vagrant.sh
-  SHELL
+ 
+  # NO! this is already in ubuntu-16.04.box template, so should be 2x" 
+  #config.vm.provision "shell", inline: <<-SHELL
+  #    /vagrant/vagrant.sh
+  #SHELL
 end
