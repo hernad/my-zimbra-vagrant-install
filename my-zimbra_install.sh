@@ -1,8 +1,14 @@
 #!/bin/bash
 
 if [ x$1 == x--init ] ; then
-  sudo rm -rf /opt/zimbra/*
+
+
+  for d in backup bin common conf config contrib data db docs extensions-extra fbqueue index jetty jetty- lib libexec log logger mailboxd redolog ssl store zimlets zimlets-deployed zmstat
+  do
+    sudo rm -rf /opt/zimbra/$d*
+  done
   sudo rm -rf /opt/zimbra/.install_history
+
   sudo apt-get remove -y zimbra-core # na osnovu zimbra-core installer utvrdjuje da li je nova instalacija ili upgrade
   sudo mkdir -p /opt/zimbra/install_git
   sudo chown vagrant /opt/zimbra/install_git
@@ -38,6 +44,7 @@ if [ ! -d /opt/zimbra/install_git ]  ; then
 fi
 
 cd /opt/zimbra/install_git
+rm -rf zcs-*
 tar xvf /vagrant/zcs.tar.gz
 cd zcs-*
 
