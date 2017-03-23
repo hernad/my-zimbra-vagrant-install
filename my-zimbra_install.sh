@@ -57,4 +57,6 @@ ZIMBRA_DOMAIN=out.ba
 sudo su -c "echo $ZIMBRA_HOSTNAME > /etc/hostname"
 sudo su -c "hostname $ZIMBRA_HOSTNAME"
 sudo su -c "sed -i -e s/vagrant.vm/$ZIMBRA_HOSTNAME/ /etc/hosts"
+echo "zimbra proxy only listens on 127.0.0.1, so 127.0.1.1 -\> 127.0.0.1"
+sudo su -c "sed -i -e s/127.0.1.1/127.0.0.1/ /etc/hosts"
 sudo su -c "ZIMBRA_HOSTNAME=$ZIMBRA_HOSTNAME ZIMBRA_DOMAIN=$ZIMBRA_DOMAIN ZIMBRA_FORCE_NEW_INSTALL=yes ./install.sh"

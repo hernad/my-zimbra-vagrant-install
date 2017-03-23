@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
   config.persistent_storage.mountpoint = '/opt/zimbra'
 
   config.vm.network "forwarded_port", guest: 443, host: 4430
-  config.vm.network "forwarded_port", guest: 7071, host: 4439
+  config.vm.network "forwarded_port", guest: 7071, host: 7071
 
   config.vm.provider "virtualbox" do |vb|
      vb.memory = "4096"
